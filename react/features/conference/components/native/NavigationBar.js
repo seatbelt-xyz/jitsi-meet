@@ -58,7 +58,7 @@ const NavigationBar = (props: Props) => {
             <View
                 pointerEvents = 'box-none'
                 style = { styles.roomNameWrapper }>
-                {
+                {/* {
                     props._meetingNameEnabled
                         && <View style = { styles.roomNameView }>
                             <Text
@@ -67,14 +67,14 @@ const NavigationBar = (props: Props) => {
                                 { props._meetingName }
                             </Text>
                         </View>
-                }
+                } */}
                 {
                     props._conferenceTimerEnabled
                             && <View style = { styles.roomTimerView }>
                                 <ConferenceTimer textStyle = { styles.roomTimer } />
                             </View>
                 }
-                <Labels />
+                {/* <Labels /> */}
             </View>
         </View>
     );

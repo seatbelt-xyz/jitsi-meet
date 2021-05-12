@@ -141,7 +141,7 @@ function Thumbnail(props: Props) {
     return (
         <Container
             onClick = { _onClick }
-            onLongPress = { _onThumbnailLongPress }
+            // onLongPress = { _onThumbnailLongPress }
             style = { [
                 styles.thumbnail,
                 participant.pinned && !tileView
