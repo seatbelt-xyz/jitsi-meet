@@ -30,9 +30,9 @@ ext {
     moduleGroupId = 'com.facebook.react'
 
     // Maven repo where artifacts will be published
-    mavenRepo = "http://nexus-eq.8x8.com:8081/nexus/content/repositories/cluj-release/"
-    mavenUser = "cjdeployment"
-    mavenPassword = "Admin2018"
+    mavenRepo = System.env.MVN_REPO ?: ""
+    mavenUser = System.env.MVN_USER ?: ""
+    mavenPassword = System.env.MVN_PASSWORD ?: ""
 
     // Libre build
     libreBuild = (System.env.LIBRE_BUILD ?: "false").toBoolean()
