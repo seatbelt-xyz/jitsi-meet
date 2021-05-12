@@ -1,29 +1,28 @@
 // @flow
 
-import React from 'react';
-import { SafeAreaView, View } from 'react-native';
+import React from "react";
+import { SafeAreaView, View } from "react-native";
 
-import { ColorSchemeRegistry } from '../../../base/color-scheme';
-import { connect } from '../../../base/redux';
-import { StyleType } from '../../../base/styles';
-import { ChatButton } from '../../../chat';
-import { InviteButton } from '../../../invite';
-import { TileViewButton } from '../../../video-layout';
-import { isToolboxVisible, getMovableButtons } from '../../functions.native';
-import AudioMuteButton from '../AudioMuteButton';
-import HangupButton from '../HangupButton';
-import VideoMuteButton from '../VideoMuteButton';
+import { ColorSchemeRegistry } from "../../../base/color-scheme";
+import { connect } from "../../../base/redux";
+import { StyleType } from "../../../base/styles";
+import { ChatButton } from "../../../chat";
+import { InviteButton } from "../../../invite";
+import { TileViewButton } from "../../../video-layout";
+import { isToolboxVisible, getMovableButtons } from "../../functions.native";
+import AudioMuteButton from "../AudioMuteButton";
+import HangupButton from "../HangupButton";
+import VideoMuteButton from "../VideoMuteButton";
 
-import OverflowMenuButton from './OverflowMenuButton';
-import RaiseHandButton from './RaiseHandButton';
-import ToggleCameraButton from './ToggleCameraButton';
-import styles from './styles';
+import OverflowMenuButton from "./OverflowMenuButton";
+import RaiseHandButton from "./RaiseHandButton";
+import ToggleCameraButton from "./ToggleCameraButton";
+import styles from "./styles";
 
 /**
  * The type of {@link Toolbox}'s React {@code Component} props.
  */
 type Props = {
-
     /**
      * The color-schemed stylesheet of the feature.
      */
@@ -42,7 +41,7 @@ type Props = {
     /**
      * The redux {@code dispatch} function.
      */
-    dispatch: Function
+    dispatch: Function,
 };
 
 /**
@@ -57,31 +56,30 @@ function Toolbox(props: Props) {
     }
 
     const { _styles, _width } = props;
-    const { buttonStylesBorderless, hangupButtonStyles, toggledButtonStyles } = _styles;
+    const { buttonStylesBorderless, hangupButtonStyles, toggledButtonStyles } =
+        _styles;
     const additionalButtons = getMovableButtons(_width);
     const backgroundToggledStyle = {
         ...toggledButtonStyles,
-        style: [
-            toggledButtonStyles.style,
-            _styles.backgroundToggle
-        ]
+        style: [toggledButtonStyles.style, _styles.backgroundToggle],
     };
 
     return (
-        <View
-            pointerEvents = 'box-none'
-            style = { styles.toolboxContainer }>
+        <View pointerEvents="box-none" style={styles.toolboxContainer}>
             <SafeAreaView
-                accessibilityRole = 'toolbar'
-                pointerEvents = 'box-none'
-                style = { styles.toolbox }>
+                accessibilityRole="toolbar"
+                pointerEvents="box-none"
+                style={styles.toolbox}
+            >
                 <AudioMuteButton
-                    styles = { buttonStylesBorderless }
-                    toggledStyles = { toggledButtonStyles } />
+                    styles={buttonStylesBorderless}
+                    toggledStyles={toggledButtonStyles}
+                />
                 <VideoMuteButton
-                    styles = { buttonStylesBorderless }
-                    toggledStyles = { toggledButtonStyles } />
-                { additionalButtons.has('chat')
+                    styles={buttonStylesBorderless}
+                    toggledStyles={toggledButtonStyles}
+                />
+                {/* { additionalButtons.has('chat')
                       && <ChatButton
                           styles = { buttonStylesBorderless }
                           toggledStyles = { backgroundToggledStyle } />}
@@ -98,9 +96,12 @@ function Toolbox(props: Props) {
                           toggledStyles = { backgroundToggledStyle } />}
                 <OverflowMenuButton
                     styles = { buttonStylesBorderless }
-                    toggledStyles = { toggledButtonStyles } />
-                <HangupButton
-                    styles = { hangupButtonStyles } />
+                    toggledStyles = { toggledButtonStyles } /> */}
+                <ToggleCameraButton
+                    styles={buttonStylesBorderless}
+                    toggledStyles={backgroundToggledStyle}
+                />
+                <HangupButton styles={hangupButtonStyles} />
             </SafeAreaView>
         </View>
     );
@@ -117,9 +118,9 @@ function Toolbox(props: Props) {
  */
 function _mapStateToProps(state: Object): Object {
     return {
-        _styles: ColorSchemeRegistry.get(state, 'Toolbox'),
+        _styles: ColorSchemeRegistry.get(state, "Toolbox"),
         _visible: isToolboxVisible(state),
-        _width: state['features/base/responsive-ui'].clientWidth
+        _width: state["features/base/responsive-ui"].clientWidth,
     };
 }
 
