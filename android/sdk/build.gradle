@@ -223,6 +223,11 @@ publishing {
                     dependency.appendNode('version', it.moduleVersion)
                 }
             }
+
+
+            println "Taskssadsdasd:" + rootProject.ext.mavenRepo
+            println "Taskssadsdasd1:" + rootProject.ext.mavenUser
+            println "Taskssadsdasd2:" + rootProject.ext.mavenPassword
         }
 
     }
